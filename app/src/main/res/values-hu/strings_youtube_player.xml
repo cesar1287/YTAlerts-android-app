@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="error_stream_err_unavailable">A hibaüzenet nem elérhető.</string>
+	<string name="error_stream_decryption_fail">A Youtube szolgáltatáshoz tartozó dekódoló kód betöltése sikertelen.</string>
+	<string name="error_stream_parse_error">Olvasási hiba.</string>
+
+	<string name="error_video_play">Videólejátszási Hiba</string>
+	<string name="error_video_streams_empty">The video %s has no streams!</string>
+	<string name="error_get_video_desc">A videóleírás lekérése közben hiba lépett fel.</string>
+	<string name="error_invalid_url">Érvénytelen videó URL:  %s</string>
+
+	<string name="warning_live_video">Cannot play live streams for now.  Play live stream externally?</string>
+
+	<string name="ratings_disabled">Ratings disabled</string>
+
+	<string name="loading_video">Videó betöltése…</string>
+	<string name="get_new_video_steam">New Stream</string>
+	<string name="open_in_browser">Megnyitás böngészőben</string>
+	<string name="open_with">Megnyitás ezzel:</string>
+	<string name="share">Share</string>
+	<string name="share_via">Share via</string>
+	<string name="copy_url">Copy URL</string>
+	<string name="url_copied_to_clipboard">URL copied to clipboard.</string>
+
+	<string name="error_get_comments">A hozzászólások lekérése közben hiba lépett fel.</string>
+	<string name="no_video_comments">A videó alatt nincsenek hozzászólások, vagy le vannak tiltva.</string>
+	<string name="view_replies">Válaszok megtekintése</string>
+	<string name="hide_replies">Válaszok elrejtése</string>
+
+	<string name="enter_video_url">Videó URL beírása</string>
+	<string name="play">Lejátszás</string>
+	<string name="cancel">Mégsem</string>
+	<string name="clear">Törlés</string>
+</resources>

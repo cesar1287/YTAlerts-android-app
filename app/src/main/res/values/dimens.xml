@@ -1,9 +1,9 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="appbar_padding_top">8dp</dimen>
-    <dimen name="nav_header_vertical_spacing">16dp</dimen>
-    <dimen name="nav_header_height">160dp</dimen>
+	<dimen name="top_level_comment_thumbnail_width">60dp</dimen>
+	<dimen name="child_comment_thumbnail_width">42dp</dimen>
+
+	<dimen name="description_drawer_height">280dp</dimen>
+	<dimen name="comments_drawer_width">300dp</dimen>
+
+	<dimen name="video_grid_progress_bar_top_margin">50dp</dimen>
 </resources>

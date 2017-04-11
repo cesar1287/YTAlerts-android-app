@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="bookmarks">Favoritos</string>
+
+	<string name="bookmark">Favorito</string>
+	<string name="video_bookmarked">Vídeo salvo como favorito</string>
+	<string name="video_bookmarked_error">Não foi possível marcar o vídeo como favorito.</string>
+
+	<string name="unbookmark">Desmarmar favorito</string>
+	<string name="video_unbookmarked">Vídeo desmarcado como favorito</string>
+	<string name="video_unbookmarked_error">Não foi possível desmarcar o vídeo como favorito.</string>
+
+	<string name="no_bookmarked_videos_text">Você ainda não marcou nenhum vídeo como favorito.\n\nQuando o fizer, ele aparecerá aqui.</string>
+</resources>

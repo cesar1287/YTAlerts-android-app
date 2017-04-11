@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="feed">Feed</string>
+
+	<string name="fetching_subscription_videos">Carregando vídeos dos canais inscritos.</string>
+	<string name="fetched_videos_from_channels">Carregado %1$d vídeo(s) de %2$d/%3$d canal(is).</string>
+	<string name="no_new_videos_found">Não foram encontrados novos vídeos.</string>
+	<string name="no_subscriptions_text">Você não se inscreveu em nenhum canal.\n\nQuando o fizer, todos os vídeos dos seus canais inscritos, do último mês, aparecerão aqui.</string>
+</resources>
