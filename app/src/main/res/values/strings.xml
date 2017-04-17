@@ -13,4 +13,8 @@
     <string name="banner_ad_unit_id">ca-app-pub-5876317032514043/1119629810</string>
     <string name="interstitial_full_screen">ca-app-pub-5876317032514043/3514693016</string>
     <string name="error_loading_ad">Erro ao carregar o anúncio</string>
+    <string name="doubts">Dúvidas</string>
+    <string name="about">Sobre</string>
+    <string name="loading_doubts_pls_wait">Carregando dúvidas, por favor aguarde…</string>
+    <string name="error_loading_doubts">Erro ao carregar as dúvidas</string>
 </resources>
