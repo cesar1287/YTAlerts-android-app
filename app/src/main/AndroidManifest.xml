@@ -41,7 +41,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".gui.activities.PreferencesActivity" />
-        <activity android:name=".gui.activities.SplashScreenActivity"></activity>
+        <activity android:name=".gui.activities.SplashScreenActivity" />
+        <activity android:name=".gui.activities.DoubtsActivity" />
+        <activity android:name=".gui.activities.AboutActivity"></activity>
     </application>
 
 </manifest>
