@@ -41,11 +41,15 @@
 			android:id="@+id/des_handle"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical">
+			android:orientation="vertical"
+			android:gravity="end">
 			<ImageView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:padding="5dp"
+				android:padding="10dp"
+				android:layout_marginRight="30dp"
+				android:layout_marginEnd="30dp"
+                android:layout_marginBottom="6dp"
 				android:src="@drawable/ic_info_white"
 				android:background="@color/video_player_drawer_background"/>
 		</LinearLayout>
@@ -57,9 +61,27 @@
 			android:orientation="vertical"
 			android:padding="16dp"
 			android:gravity="left"
+            android:background="@color/comment_background"
 			layout="@layout/video_description" />
 	</hollowsoft.slidingdrawer.SlidingDrawer>
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/bookmark_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_heart_white"
+            android:layout_alignParentBottom="true"
+            android:scaleX="0.45"
+            android:scaleY="0.42"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginEnd="60dp"/>
+    </RelativeLayout>
 
 	<!--
 		COMMENTS
@@ -69,7 +91,7 @@
 		android:layout_width="@dimen/comments_drawer_width"
 		android:layout_height="match_parent"
 		android:orientation="horizontal"
-		android:layout_gravity="right"
+		android:layout_gravity="end"
 		drawer:handle="@+id/comments_handle"
 		drawer:content="@+id/comments_content">
 
@@ -77,11 +99,13 @@
 			android:id="@+id/comments_handle"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:orientation="vertical">
+			android:orientation="vertical"
+			android:gravity="bottom">
 			<ImageView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:padding="5dp"
+				android:padding="10dp"
+                android:layout_marginBottom="5dp"
 				android:src="@drawable/ic_comment_white"
 				android:background="@color/video_player_drawer_background"/>
 		</LinearLayout>

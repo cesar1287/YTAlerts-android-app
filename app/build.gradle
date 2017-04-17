@@ -6,14 +6,14 @@ android {
 
     defaultConfig {
         applicationId "free.rm.skytube"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 6
         buildConfigField 'String[]', 'YOUTUBE_API_KEYS',
                 '{' +
-                        '"AIzaSyDAOcAgAAd098p_FLIePaQNKPTpcyhUGBA",' +
-                        '"AIzaSyBKBkG_-OUjncLyQCB32ZrWBiT-mD0kssI"'  +
-                '}';
+                        '"AIzaSyDowebpe2GrJGQn7jpcsxL24xGDliA11Bw",' +
+                        '"AIzaSyAESRPbXFaYdRoX2r8xwxlDRT51QxWubVc"' +
+                        '}';
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true    // this is as we have over 65536 lines of code...
     }
@@ -27,13 +27,14 @@ android {
         // 100% Open-Source Edition
         oss {
             applicationId "free.rm.skytube.oss"
-            versionName "2.4"          // the digits of the *fractional part* shall not be larger than "9"
+            versionName "1.0"
+            // the digits of the *fractional part* shall not be larger than "9"
             resValue "string", "app_name", "YT Alerts"
         }
         // 99% Open-source edition:  uses the YouTube Player Jar [i.e. proprietary module - optional usage]
         extra {
-            applicationId "free.rm.skytube.extra"
-            versionName "2.4 Extra"    // the digits of the *fractional part* shall not be larger than "9"
+            applicationId "free.rm.skytube"
+            versionName "1.0"    // the digits of the *fractional part* shall not be larger than "9"
             resValue "string", "app_name", "YT Alerts"
         }
     }
@@ -45,11 +46,12 @@ configurations {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
 
     nonFreeCompile files('libs/YouTubeAndroidPlayerApi.jar')
 
     compile group: 'org.ocpsoft.prettytime', name: 'prettytime', version: '3.2.7.Final'
+    compile group: 'joda-time', name: 'joda-time', version: '2.3'
+    // this is as we have over 65536 lines of code...
     compile 'com.google.http-client:google-http-client-android:1.22.0'
     compile 'com.google.apis:google-api-services-youtube:v3-rev181-1.22.0'
     compile 'org.jsoup:jsoup:1.8.3'
@@ -58,10 +60,16 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.google.code.gson:gson:2.4'
-    compile group: 'joda-time', name: 'joda-time', version: '2.3'
     compile 'com.afollestad.material-dialogs:core:0.9.0.2'
-
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:design:25.1.1'
-    compile 'com.android.support:multidex:1.0.1'    // this is as we have over 65536 lines of code...
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.firebase:firebase-ads:10.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    compile 'com.google.firebase:firebase-database:10.0.1'
+    testCompile 'junit:junit:4.12'
 }
+
+
+
+apply plugin: 'com.google.gms.google-services'

@@ -5,8 +5,8 @@
 	<string name="unsubscribe">Desinscrever</string>
 	<string name="total_subscribers">%,d inscrições</string>
 
-	<string name="subscribed">subscribed</string>
-	<string name="unsubscribed">unsubscribed</string>
+	<string name="subscribed">Inscrito</string>
+	<string name="unsubscribed">Desinscrito</string>
 
 	<string name="error_get_subbed_channels">Ocorreu um erro aos carregar os canais incritos.</string>
 	<string name="error_check_if_user_has_subbed">Incapaz de checar se o usuário está inscrito no canal (id=%s)</string>

@@ -87,14 +87,17 @@ public class GetSubscriptionVideosTask extends AsyncTaskParallel<Void, Void, Voi
 				 * videos published after the last published time stored in the database, so we don't need to worry about missing
 				 * any.
  				 */
-				long l = SkyTubeApp.getPreferenceManager().getLong(SkyTubeApp.KEY_SUBSCRIPTIONS_LAST_UPDATED, -1);
+
+				getChannelVideos.setPublishedAfter(getOneWeekAgo());
+
+				/*long l = SkyTubeApp.getPreferenceManager().getLong(SkyTubeApp.KEY_SUBSCRIPTIONS_LAST_UPDATED, -1);
 				if(l != -1) {
 					DateTime subscriptionsLastUpdated = new DateTime(l);
 					if (subscriptionsLastUpdated != null)
 						getChannelVideos.setPublishedAfter(subscriptionsLastUpdated);
 					else // For the first fetch, default to only videos published in the last month.
 						getChannelVideos.setPublishedAfter(getOneMonthAgo());
-				}
+				}*/
 
 				getChannelVideos.setQuery(channel.getId());
 				this.channel = channel;
@@ -147,9 +150,9 @@ public class GetSubscriptionVideosTask extends AsyncTaskParallel<Void, Void, Voi
 		}
 
 
-		private DateTime getOneMonthAgo() {
+		private DateTime getOneWeekAgo() {
 			Calendar calendar = Calendar.getInstance();
-			calendar.add(Calendar.MONTH, -1);
+			calendar.add(Calendar.WEEK_OF_MONTH, -1);
 			Date date = calendar.getTime();
 			return new DateTime(date);
 		}

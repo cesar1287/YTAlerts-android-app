@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "642515298695",
+    "firebase_url": "https://ytalerts-24d36.firebaseio.com",
+    "project_id": "ytalerts-24d36",
+    "storage_bucket": "ytalerts-24d36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642515298695:android:6486840d00ce7853",
+        "android_client_info": {
+          "package_name": "free.rm.skytube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642515298695-pdu7jenb0s61gs2l25n0kr1bbqp826ur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAESRPbXFaYdRoX2r8xwxlDRT51QxWubVc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

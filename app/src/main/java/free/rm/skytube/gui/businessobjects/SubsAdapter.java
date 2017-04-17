@@ -183,8 +183,9 @@ public class SubsAdapter extends RecyclerViewAdapterEx<YouTubeChannel, SubsAdapt
 			rowView.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					if (listener instanceof MainActivityListener)
+					if (listener != null) {
 						listener.onChannelClick(channel);
+					}
 				}
 			});
 		}
@@ -192,7 +193,7 @@ public class SubsAdapter extends RecyclerViewAdapterEx<YouTubeChannel, SubsAdapt
 		public void updateInfo(YouTubeChannel channel) {
 			Glide.with(getContext())
 					.load(channel.getThumbnailNormalUrl())
-					.placeholder(R.drawable.channel_thumbnail_default)
+					.placeholder(R.mipmap.ic_launcher)
 					.into(thumbnailImageView);
 
 			channelNameTextView.setText(channel.getTitle());

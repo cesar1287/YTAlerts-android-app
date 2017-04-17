@@ -24,6 +24,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import free.rm.skytube.R;
 import free.rm.skytube.businessobjects.MainActivityListener;
@@ -38,6 +41,8 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 	private Context context = null;
 	private MainActivityListener listener;
 
+	private InterstitialAd mInterstitialAd;
+
 	private View channelLayout;
 	private TextView titleTextView;
 	private TextView channelTextView;
@@ -48,8 +53,23 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 	private ImageView thumbnailImageView;
 
 
-	public GridViewHolder(View view, MainActivityListener listener) {
+	GridViewHolder(View view, final MainActivityListener listener) {
 		super(view);
+
+		mInterstitialAd = new InterstitialAd(view.getContext());
+		mInterstitialAd.setAdUnitId(view.getResources().getString(R.string.interstitial_full_screen));
+		requestNewInterstitial();
+
+		mInterstitialAd.setAdListener(new AdListener() {
+			@Override
+			public void onAdClosed() {
+				requestNewInterstitial();
+				if (youTubeVideo != null) {
+					YouTubePlayer.launch(youTubeVideo, (Context)listener);
+				}
+			}
+		});
+
 		channelLayout = view.findViewById(R.id.channel_layout);
 		titleTextView = (TextView) view.findViewById(R.id.title_text_view);
 		channelTextView = (TextView) view.findViewById(R.id.channel_text_view);
@@ -62,6 +82,11 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 		this.listener = listener;
 	}
 
+	private void requestNewInterstitial() {
+		AdRequest adRequest = new AdRequest.Builder().build();
+
+		mInterstitialAd.loadAd(adRequest);
+	}
 
 	/**
 	 * Updates the contents of this ViewHold such that the data of these views is equal to the
@@ -77,7 +102,6 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 		this.listener = listener;
 		updateViewsData(this.youTubeVideo, showChannelInfo);
 	}
-
 
 	/**
 	 * This method will update the {@link View}s of this object reflecting the supplied video.
@@ -113,13 +137,16 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 		thumbnailImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View thumbnailView) {
-				if (youTubeVideo != null) {
-					YouTubePlayer.launch(youTubeVideo, (Context)listener);
+				if (mInterstitialAd.isLoaded()) {
+					mInterstitialAd.show();
+				} else {
+					if (youTubeVideo != null) {
+						YouTubePlayer.launch(youTubeVideo, (Context)listener);
+					}
 				}
 			}
 		});
 	}
-
 
 
 	private void setupChannelOnClickListener(boolean openChannelOnClick) {
@@ -134,7 +161,7 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 				}
 			};
 		}
-		channelLayout.setOnClickListener(channelListener);
+		channelTextView.setOnClickListener(channelListener);
 	}
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="feed">Feed</string>
+	<string name="feed">Inscrições</string>
 
 	<string name="fetching_subscription_videos">Carregando vídeos dos canais inscritos.</string>
 	<string name="fetched_videos_from_channels">Carregado %1$d vídeo(s) de %2$d/%3$d canal(is).</string>

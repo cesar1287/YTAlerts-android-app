@@ -5,6 +5,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,7 +21,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -70,6 +75,7 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 
 	private TextView			videoDescTitleTextView = null;
 	private ImageView			videoDescChannelThumbnailImageView = null;
+	private ImageView			bookmarkHeart = null;
 	private TextView			videoDescChannelTextView = null;
 	private SubscribeButton		videoDescSubscribeButton = null;
 	private TextView			videoDescViewsTextView = null;
@@ -172,6 +178,8 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 				}
 			});
 
+			bookmarkHeart = (ImageView) view.findViewById(R.id.bookmark_heart);
+
 			// hide action bar
 			getSupportActionBar().hide();
 
@@ -234,6 +242,10 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 			videoDescRatingsDisabledTextView.setVisibility(View.VISIBLE);
 		}
 
+		if(!BookmarksDb.getBookmarksDb().isBookmarked(youTubeVideo)){
+			bookmarkHeart.setVisibility(View.INVISIBLE);
+		}
+
 		// load the video
 		loadVideo();
 	}
@@ -245,10 +257,26 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 		loadingVideoView.setVisibility(View.GONE);
 		videoView.seekTo(videoCurrentPosition);
 		videoView.start();
+		styleMediaController(mediaController);
 		showHud();
 	}
 
-
+	private void styleMediaController(View view) {
+		if (view instanceof MediaController) {
+			MediaController v = (MediaController) view;
+			for(int i = 0; i < v.getChildCount(); i++) {
+				styleMediaController(v.getChildAt(i));
+			}
+		} else if (view instanceof LinearLayout) {
+			LinearLayout ll = (LinearLayout) view;
+			for(int i = 0; i < ll.getChildCount(); i++) {
+				styleMediaController(ll.getChildAt(i));
+			}
+		} else if (view instanceof SeekBar) {
+			((SeekBar) view).getProgressDrawable().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+			((SeekBar) view).getThumb().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+		}
+	}
 
 	@Override
 	public void onPause() {
@@ -296,6 +324,8 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 			commentsDrawer.close();
 			commentsDrawer.setVisibility(View.INVISIBLE);
 
+			bookmarkHeart.setVisibility(View.INVISIBLE);
+
 			// hide UI after a certain timeout (defined in HUD_VISIBILITY_TIMEOUT)
 			timerHandler = new Handler();
 			timerHandler.postDelayed(new Runnable() {
@@ -320,6 +350,10 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 
 			videoDescriptionDrawer.setVisibility(View.VISIBLE);
 			commentsDrawer.setVisibility(View.VISIBLE);
+
+			if(BookmarksDb.getBookmarksDb().isBookmarked(youTubeVideo)){
+				bookmarkHeart.setVisibility(View.VISIBLE);
+			}
 
 			// If there is a timerHandler running, then cancel it (stop if from running).  This way,
 			// if the HUD was hidden on the 5th second, and the user reopens the HUD, this code will
@@ -716,7 +750,7 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 			if (youTubeChannel != null) {
 				Glide.with(getActivity())
 						.load(youTubeChannel.getThumbnailNormalUrl())
-						.placeholder(R.drawable.channel_thumbnail_default)
+						.placeholder(R.mipmap.ic_launcher)
 						.into(videoDescChannelThumbnailImageView);
 			}
 		}

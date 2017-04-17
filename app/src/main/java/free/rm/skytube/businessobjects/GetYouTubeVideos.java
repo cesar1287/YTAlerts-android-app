@@ -88,8 +88,7 @@ public abstract class GetYouTubeVideos {
 
 
 	protected String getPreferredRegion() {
-		String region = SkyTubeApp.getPreferenceManager()
-				.getString(SkyTubeApp.getStr(R.string.pref_key_preferred_region), "").trim();
+		String region = "BR";
 		return (region.isEmpty() ? null : region);
 	}
 

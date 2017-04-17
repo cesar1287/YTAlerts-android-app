@@ -196,7 +196,7 @@ public class CommentsAdapter extends BaseExpandableListAdapter {
 			upvotesTextView.setText(comment.getLikeCount());
 			Glide.with(context)
 					.load(comment.getThumbnailUrl())
-					.placeholder(R.drawable.channel_thumbnail_default)
+					.placeholder(R.mipmap.ic_launcher)
 					.into(thumbnailImageView);
 
 			// change the width dimensions depending on whether the comment is a top level or a child

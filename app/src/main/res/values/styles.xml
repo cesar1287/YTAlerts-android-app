@@ -19,7 +19,6 @@
 
 	</style>
 
-
 	<!-- *************************************************************************************** -->
 	<!--
 		Main Activity
@@ -41,13 +40,13 @@
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
 		<item name="android:textColor">@color/video_cell_text_main</item>
-		<item name="android:background">@color/video_cell_background</item>
+		<item name="android:background">@color/video_cell_background_title</item>
 	</style>
 
 	<style name="GridMicroDetailsTextView" parent="GridTextView">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:padding">2dp</item>
-		<item name="android:background">#BA111517</item>
+		<item name="android:background">#80000000</item>
 		<item name="android:singleLine">true</item>
 		<item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
 	</style>
@@ -118,6 +117,7 @@
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">@color/video_player_drawer_text</item>
+		<item name="android:textColorLink">@color/video_player_drawer_text</item>
 		<item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
 	</style>
 

@@ -1,14 +1,16 @@
 <resources>
-	<string name="could_not_get_videos">Could not get %s videos.</string>
-	<string name="views">%,d views</string>
-	<string name="error">Error</string>
-	<string name="ok">OK</string>
-	<string name="search_videos">Buscar vídeos</string>
-	<string name="launch_offical_player_error">An error has occurred while trying to launch the
-		official YouTube player. Make sure that the official Google\'s YouTube app is installed on
-		your device.</string>
-	<string name="LIVE">LIVE</string>
+    <string name="could_not_get_videos">Incapaz de obter %s vídeo(s).</string>
+    <string name="views">%,d visualizações</string>
+    <string name="error">Erro</string>
+    <string name="ok">OK</string>
+    <string name="search_videos">Buscar vídeos</string>
+    <string name="launch_offical_player_error">Algo deu errado ao abrir o player oficial do YouTube. Verifique se o aplicativo oficial do YouTube está instalado no seu celular.</string>
+    <string name="LIVE">AO VIVO</string>
 
-	<string name="featured">Em Destaque</string>
-	<string name="most_popular">Em Alta</string>
+    <string name="featured">Início</string>
+    <string name="most_popular">Em alta</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-5876317032514043/1119629810</string>
+    <string name="interstitial_full_screen">ca-app-pub-5876317032514043/3514693016</string>
+    <string name="error_loading_ad">Erro ao carregar o anúncio</string>
 </resources>

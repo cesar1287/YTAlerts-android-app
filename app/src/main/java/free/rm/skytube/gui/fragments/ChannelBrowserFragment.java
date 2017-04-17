@@ -145,7 +145,7 @@ public class ChannelBrowserFragment extends BaseVideosGridFragment {
 		if (channel != null) {
 			Glide.with(getActivity())
 					.load(channel.getThumbnailNormalUrl())
-					.placeholder(R.drawable.channel_thumbnail_default)
+					.placeholder(R.mipmap.ic_launcher)
 					.into(channelThumbnailImage);
 
 			Glide.with(getActivity())

@@ -2,9 +2,11 @@
 <resources>
 	<color name="colorPrimary">#E62117</color>
 	<color name="colorPrimaryDark">#B71C1C</color>
-	<color name="colorAccent">#FFFF</color>
+	<color name="colorAccent">#000</color>
 
 	<color name="skytube_theme_colour">#ff6600</color>
+
+    <color name="white">#FFF</color>
 
 	<!--
 		Subs Drawer Colours
@@ -21,10 +23,11 @@
 	<!--
 		Video (Grid) Cells
 	-->
-	<color name="video_cell_background">#111517</color>
+	<color name="video_cell_background">#EEEEEE</color>
+	<color name="video_cell_background_title">#E62117</color>
 	<color name="video_cell_text_main">#FFF</color>
 	<color name="video_cell_text_details">#808080</color>
-	<color name="grid_view_background">@color/colorAccent</color>
+	<color name="grid_view_background">@color/white</color>
 
 	<!--
 		Video Player Colours
@@ -32,14 +35,14 @@
 	<!-- Actionbar background colour ~~ which is the same as com.android.internal.R.layout.media_controller
 				(used to be #BB000000) -->
 	<color name="video_player_hud">#CC000000</color>
-	<color name="video_player_drawer_background">@color/video_player_hud</color>
-	<color name="video_player_drawer_text">#b3b3b3</color>
+	<color name="video_player_drawer_background">@android:color/transparent</color>
+	<color name="video_player_drawer_text">#FFF</color>
 
 	<color name="video_desc_like_bar">@color/skytube_theme_colour</color>
 
 	<!-- Comments -->
 	<color name="comment_background">@color/video_player_hud</color>
-	<color name="comment_text">#b3b3b3</color>
+	<color name="comment_text">#FFF</color>
 
 
 	<!--

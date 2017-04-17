@@ -53,7 +53,7 @@
 						android:padding="16dp"
 						android:scaleType="fitXY"
 						android:adjustViewBounds="true"
-						android:src="@drawable/channel_thumbnail_default" />
+						android:src="@mipmap/ic_launcher" />
 
 					<!-- CHANNEL INFO -->
 					<LinearLayout

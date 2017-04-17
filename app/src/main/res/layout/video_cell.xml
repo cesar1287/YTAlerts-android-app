@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  xmlns:app="http://schemas.android.com/apk/res-auto"
-			  android:orientation="vertical"
-			  android:layout_width="match_parent"
-			  android:layout_height="wrap_content"
-			  android:layout_margin="2dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="-3dp">
 
 	<free.rm.skytube.gui.businessobjects.VideoCellLayout
 		android:layout_width="match_parent"
@@ -19,12 +24,13 @@
 			android:foreground="?android:attr/selectableItemBackground"/>
 
 		<TextView
-			android:id="@+id/title_text_view"
+			android:id="@+id/channel_text_view"
 			style="@style/GridTextView"
 			android:padding="10dp"
 			android:minLines="1"
 			android:maxLines="2"
-			android:text="Title"
+            android:text="Channel"
+			android:gravity="center_horizontal"
 			android:layout_alignParentTop="true"
 			android:layout_alignParentLeft="true"
 			android:layout_alignParentStart="true"/>
@@ -67,7 +73,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:padding="10dp"
-				android:background="@color/video_cell_background">
+				android:background="@drawable/border_recycler_view">
 
 				<LinearLayout
 					android:orientation="vertical"
@@ -77,46 +83,44 @@
 					android:id="@+id/channel_layout">
 
 					<TextView
-						android:id="@+id/channel_text_view"
-						style="@style/GridDetailsTextView"
-						android:text="Channel"
+						android:id="@+id/title_text_view"
+						android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Title"
+						android:textColor="#333333"
+						android:gravity="center_horizontal"
 						android:foreground="?android:attr/selectableItemBackground"/>
 
 					<LinearLayout
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
-						android:orientation="horizontal">
+						android:orientation="horizontal"
+                        android:gravity="center_horizontal">
 						<TextView
 							android:id="@+id/views_text_view"
 							android:layout_width="wrap_content"
-							style="@style/GridDetailsTextView"
+							android:layout_height="wrap_content"
+							android:textColor="#757575"
 							android:text="199 Views"/>
 
 						<TextView
 							android:id="@+id/separator_text_view"
 							android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+							android:textColor="#757575"
 							android:paddingLeft="10dp"
 							android:paddingRight="10dp"
-							style="@style/GridDetailsTextView"
 							android:text="|"/>
 
 						<TextView
 							android:id="@+id/publish_date_text_view"
 							android:layout_width="wrap_content"
-							style="@style/GridDetailsTextView"
+							android:layout_height="wrap_content"
+							android:textColor="#757575"
 							android:text="x days ago"/>
 					</LinearLayout>
 
 				</LinearLayout>
-
-				<!-- <ImageButton
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					app:srcCompat="@drawable/button_options"
-					android:id="@+id/options_button"
-					android:background="@android:color/transparent"
-					android:layout_gravity="center_vertical"
-					android:padding="5dp"/> -->
 
 			</LinearLayout>
 		</LinearLayout>

@@ -1,8 +1,6 @@
 package free.rm.skytube.gui.fragments;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,6 +17,16 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +34,18 @@ import java.util.List;
 import free.rm.skytube.R;
 import free.rm.skytube.businessobjects.MainActivityListener;
 import free.rm.skytube.businessobjects.db.BookmarksDb;
+import free.rm.skytube.gui.businessobjects.AdFirebase;
+import free.rm.skytube.gui.businessobjects.FirebaseHelper;
 import free.rm.skytube.gui.businessobjects.FragmentEx;
 import free.rm.skytube.gui.businessobjects.SubsAdapter;
 
 public class MainFragment extends FragmentEx {
+
+	Query mAd;
+	ValueEventListener valueEventListener;
+	ValueEventListener singleValueEventListener;
+	AdFirebase adFirebase;
+
 	private RecyclerView				subsListView = null;
 	private SubsAdapter					subsAdapter  = null;
 	private ActionBarDrawerToggle		subsDrawerToggle;
@@ -64,9 +80,18 @@ public class MainFragment extends FragmentEx {
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_main, container, false);
 
+		setupFirebaseAd();
+
+		AdView mAdView = (AdView) view.findViewById(R.id.adView);
+		AdRequest adRequest = new AdRequest.Builder()
+				.build();
+		mAdView.loadAd(adRequest);
+
 		// setup the toolbar / actionbar
 		Toolbar toolbar = (Toolbar) view.findViewById(R.id.activity_main_toolbar);
 		setSupportActionBar(toolbar);
+
+		getSupportActionBar().setElevation(0);
 
 		// indicate that this fragment has an action bar menu
 		setHasOptionsMenu(true);
@@ -138,9 +163,6 @@ public class MainFragment extends FragmentEx {
             }
         });
 
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-		viewPager.setCurrentItem(Integer.parseInt(sp.getString(getString(R.string.pref_key_default_tab), "0")));
-
 		tabLayout = (TabLayout)view.findViewById(R.id.tab_layout);
 		tabLayout.setupWithViewPager(viewPager);
 
@@ -177,6 +199,56 @@ public class MainFragment extends FragmentEx {
 		});
 
 		return view;
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+
+		mAd.removeEventListener(valueEventListener);
+		mAd.removeEventListener(singleValueEventListener);
+	}
+
+	public void setupFirebaseAd(){
+
+		DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mAd = mDatabase.child(FirebaseHelper.FIREBASE_DATABASE_AD);
+
+		valueEventListener = new ValueEventListener() {
+			@Override
+			public void onDataChange(DataSnapshot dataSnapshot) {
+
+				for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+					adFirebase = new AdFirebase();
+					adFirebase.setBanner((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_BANNER).getValue());
+					adFirebase.setChannel((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_CHANNEL).getValue());
+					adFirebase.setClicks((Long) postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_CLICKS).getValue());
+					adFirebase.setId_channel((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_ID_CHANNEL).getValue());
+					adFirebase.setImpressions((Long) postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_IMPRESSIONS).getValue());
+				}
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				Toast.makeText(getActivity(), R.string.error_loading_ad, Toast.LENGTH_LONG).show();
+			}
+		};
+
+		singleValueEventListener = new ValueEventListener() {
+			public void onDataChange(DataSnapshot dataSnapshot) {
+
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				Toast.makeText(getActivity(), R.string.error_loading_ad, Toast.LENGTH_LONG).show();
+			}
+		};
+
+		mAd.addValueEventListener(valueEventListener);
+
+		mAd.addListenerForSingleValueEvent(singleValueEventListener);
 	}
 
     private void setupTabIcons() {
