@@ -124,6 +124,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+			case R.id.menu_about:
+				//Intent i = new Intent(this, PreferencesActivity.class);
+				//startActivity(i);
+				return true;
+			case R.id.menu_doubts:
+				Intent j = new Intent(this, DoubtsActivity.class);
+                startActivity(j);
+				return true;
 			case R.id.menu_preferences:
 				Intent i = new Intent(this, PreferencesActivity.class);
 				startActivity(i);
@@ -152,14 +160,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 				.setPositiveButton(R.string.play, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// get the inputted URL string
-						final String videoUrl = ((EditText) ((AlertDialog) dialog).findViewById(R.id.dialog_url_edittext)).getText().toString();
+                    // get the inputted URL string
+                    final String videoUrl = ((EditText) ((AlertDialog) dialog).findViewById(R.id.dialog_url_edittext)).getText().toString();
 
-						// play the video
-						Intent i = new Intent(MainActivity.this, YouTubePlayerActivity.class);
-						i.setAction(Intent.ACTION_VIEW);
-						i.setData(Uri.parse(videoUrl));
-						startActivity(i);
+                    // play the video
+                    Intent i = new Intent(MainActivity.this, YouTubePlayerActivity.class);
+                    i.setAction(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(videoUrl));
+                    startActivity(i);
 					}
 				})
 				.setNegativeButton(R.string.cancel, null)

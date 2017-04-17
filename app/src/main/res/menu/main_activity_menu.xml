@@ -16,4 +16,12 @@
 		  android:title="@string/preferences"
 		  app:showAsAction="never"/>
 
+	<item android:id="@+id/menu_doubts"
+		android:title="@string/doubts"
+		app:showAsAction="never"/>
+
+	<item android:id="@+id/menu_about"
+		android:title="@string/about"
+		app:showAsAction="never"/>
+
 </menu>
