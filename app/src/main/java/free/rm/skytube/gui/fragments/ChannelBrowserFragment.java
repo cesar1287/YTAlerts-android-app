@@ -115,7 +115,7 @@ public class ChannelBrowserFragment extends BaseVideosGridFragment {
 			initViews();
 		}
 
-		gridView = (RecyclerView) fragment.findViewById(R.id.grid_view);
+		gridView = (RecyclerView) fragment.findViewById(R.id.grid_view1);
 
 		// set up the loading progress bar
 		LoadingProgressBar.get().setProgressBar(fragment.findViewById(R.id.loading_progress_bar));
