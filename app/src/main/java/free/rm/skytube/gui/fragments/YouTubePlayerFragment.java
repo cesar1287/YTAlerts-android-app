@@ -179,6 +179,34 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 			});
 
 			bookmarkHeart = (ImageView) view.findViewById(R.id.bookmark_heart);
+            bookmarkHeart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(BookmarksDb.getBookmarksDb().isBookmarked(youTubeVideo)){
+                        boolean successUnbookmark = BookmarksDb.getBookmarksDb().remove(youTubeVideo);
+                        Toast.makeText(getContext(),
+                                successUnbookmark  ?  R.string.video_unbookmarked  :  R.string.video_unbookmarked_error,
+                                Toast.LENGTH_LONG).show();
+
+                        if (successUnbookmark) {
+                            menu.findItem(R.id.bookmark_video).setVisible(true);
+                            menu.findItem(R.id.unbookmark_video).setVisible(false);
+                        }
+                        bookmarkHeart.setBackground(getActivity().getResources().getDrawable(R.drawable.ic_heart_white));
+                    }else{
+                        boolean successBookmark = BookmarksDb.getBookmarksDb().add(youTubeVideo);
+                        Toast.makeText(getContext(),
+                                successBookmark  ?  R.string.video_bookmarked  :  R.string.video_bookmarked_error,
+                                Toast.LENGTH_LONG).show();
+
+                        if (successBookmark) {
+                            menu.findItem(R.id.bookmark_video).setVisible(false);
+                            menu.findItem(R.id.unbookmark_video).setVisible(true);
+                        }
+                        bookmarkHeart.setBackground(getActivity().getResources().getDrawable(R.drawable.ic_heart_red));
+                    }
+                }
+            });
 
 			// hide action bar
 			getSupportActionBar().hide();
@@ -242,8 +270,8 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 			videoDescRatingsDisabledTextView.setVisibility(View.VISIBLE);
 		}
 
-		if(!BookmarksDb.getBookmarksDb().isBookmarked(youTubeVideo)){
-			bookmarkHeart.setVisibility(View.INVISIBLE);
+		if(BookmarksDb.getBookmarksDb().isBookmarked(youTubeVideo)){
+			bookmarkHeart.setBackground(getActivity().getResources().getDrawable(R.drawable.ic_heart_red));
 		}
 
 		// load the video
@@ -351,8 +379,11 @@ public class YouTubePlayerFragment extends FragmentEx implements MediaPlayer.OnP
 			videoDescriptionDrawer.setVisibility(View.VISIBLE);
 			commentsDrawer.setVisibility(View.VISIBLE);
 
+            bookmarkHeart.setVisibility(View.VISIBLE);
 			if(BookmarksDb.getBookmarksDb().isBookmarked(youTubeVideo)){
-				bookmarkHeart.setVisibility(View.VISIBLE);
+				bookmarkHeart.setBackground(getActivity().getResources().getDrawable(R.drawable.ic_heart_red));
+			}else{
+				bookmarkHeart.setBackground(getActivity().getResources().getDrawable(R.drawable.ic_heart_white));
 			}
 
 			// If there is a timerHandler running, then cancel it (stop if from running).  This way,
