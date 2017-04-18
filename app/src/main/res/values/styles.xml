@@ -29,6 +29,18 @@
 		<item name="windowNoTitle">true</item>
 	</style>
 
+	<!-- *************************************************************************************** -->
+	<!--
+		Ad Firebase
+	-->
+
+	<style name="AdFirebaseTextView" parent="AppTheme">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+		<item name="android:textColor">@color/video_cell_text_main</item>
+		<item name="android:background">#B71C1C</item>
+	</style>
 
 	<!-- *************************************************************************************** -->
 	<!--
