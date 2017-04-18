@@ -7,6 +7,15 @@ public class AdFirebase {
     private long clicks;
     private String id_channel;
     private long impressions;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getBanner() {
         return banner;

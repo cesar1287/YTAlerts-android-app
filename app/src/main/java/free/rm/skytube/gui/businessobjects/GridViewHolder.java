@@ -43,7 +43,6 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 
 	private InterstitialAd mInterstitialAd;
 
-	private View channelLayout;
 	private TextView titleTextView;
 	private TextView channelTextView;
 	private TextView thumbsUpPercentageTextView;
@@ -70,7 +69,6 @@ public class GridViewHolder extends RecyclerView.ViewHolder {
 			}
 		});
 
-		channelLayout = view.findViewById(R.id.channel_layout);
 		titleTextView = (TextView) view.findViewById(R.id.title_text_view);
 		channelTextView = (TextView) view.findViewById(R.id.channel_text_view);
 		thumbsUpPercentageTextView = (TextView) view.findViewById(R.id.thumbs_up_text_view);

@@ -13,10 +13,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -40,11 +42,6 @@ import free.rm.skytube.gui.businessobjects.FragmentEx;
 import free.rm.skytube.gui.businessobjects.SubsAdapter;
 
 public class MainFragment extends FragmentEx {
-
-	Query mAd;
-	ValueEventListener valueEventListener;
-	ValueEventListener singleValueEventListener;
-	AdFirebase adFirebase;
 
 	private RecyclerView				subsListView = null;
 	private SubsAdapter					subsAdapter  = null;
@@ -79,8 +76,6 @@ public class MainFragment extends FragmentEx {
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_main, container, false);
-
-		setupFirebaseAd();
 
 		AdView mAdView = (AdView) view.findViewById(R.id.adView);
 		AdRequest adRequest = new AdRequest.Builder()
@@ -199,56 +194,6 @@ public class MainFragment extends FragmentEx {
 		});
 
 		return view;
-	}
-
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-
-		mAd.removeEventListener(valueEventListener);
-		mAd.removeEventListener(singleValueEventListener);
-	}
-
-	public void setupFirebaseAd(){
-
-		DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        mAd = mDatabase.child(FirebaseHelper.FIREBASE_DATABASE_AD);
-
-		valueEventListener = new ValueEventListener() {
-			@Override
-			public void onDataChange(DataSnapshot dataSnapshot) {
-
-				for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-					adFirebase = new AdFirebase();
-					adFirebase.setBanner((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_BANNER).getValue());
-					adFirebase.setChannel((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_CHANNEL).getValue());
-					adFirebase.setClicks((Long) postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_CLICKS).getValue());
-					adFirebase.setId_channel((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_ID_CHANNEL).getValue());
-					adFirebase.setImpressions((Long) postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_IMPRESSIONS).getValue());
-				}
-			}
-
-			@Override
-			public void onCancelled(DatabaseError databaseError) {
-				Toast.makeText(getActivity(), R.string.error_loading_ad, Toast.LENGTH_LONG).show();
-			}
-		};
-
-		singleValueEventListener = new ValueEventListener() {
-			public void onDataChange(DataSnapshot dataSnapshot) {
-
-			}
-
-			@Override
-			public void onCancelled(DatabaseError databaseError) {
-				Toast.makeText(getActivity(), R.string.error_loading_ad, Toast.LENGTH_LONG).show();
-			}
-		};
-
-		mAd.addValueEventListener(valueEventListener);
-
-		mAd.addListenerForSingleValueEvent(singleValueEventListener);
 	}
 
     private void setupTabIcons() {
