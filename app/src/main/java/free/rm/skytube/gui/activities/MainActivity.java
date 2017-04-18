@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-        startActivity(new Intent(this, SplashScreenActivity.class));
-
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
 
@@ -61,7 +58,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 			}
 			String action = getIntent().getAction();
 			if (action != null && action.equals(ACTION_VIEW_CHANNEL)) {
-				YouTubeChannel channel = (YouTubeChannel) getIntent().getSerializableExtra(ChannelBrowserFragment.CHANNEL_OBJ);
+				//YouTubeChannel channel = (YouTubeChannel) getIntent().getSerializableExtra(ChannelBrowserFragment.CHANNEL_OBJ);
+				//onChannelClick(channel);
+				String channel = (String) getIntent().getSerializableExtra(ChannelBrowserFragment.CHANNEL_ID);
 				onChannelClick(channel);
 			} else {
 				if (mainFragment == null) {
@@ -125,8 +124,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.menu_about:
-				//Intent i = new Intent(this, PreferencesActivity.class);
-				//startActivity(i);
+				Intent u = new Intent(this, AboutActivity.class);
+				startActivity(u);
 				return true;
 			case R.id.menu_doubts:
 				Intent j = new Intent(this, DoubtsActivity.class);
