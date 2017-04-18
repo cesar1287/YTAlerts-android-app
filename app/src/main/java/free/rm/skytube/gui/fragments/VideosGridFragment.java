@@ -17,20 +17,26 @@
 
 package free.rm.skytube.gui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import free.rm.skytube.R;
 import free.rm.skytube.businessobjects.MainActivityListener;
 import free.rm.skytube.businessobjects.VideoCategory;
+import free.rm.skytube.gui.activities.MainActivity;
+import free.rm.skytube.gui.businessobjects.FirebaseHelper;
 import free.rm.skytube.gui.businessobjects.VideoGridAdapter;
 
 /**
@@ -54,6 +60,61 @@ public abstract class VideosGridFragment extends BaseVideosGridFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// inflate the layout for this fragment
 		View view = inflater.inflate(layoutResource, container, false);
+
+        TextView channelNameTextview = (TextView) view.findViewById(R.id.channel_name_text_view);
+        TextView channelDescriptionTextView = (TextView) view.findViewById(R.id.channel_description_text_view);
+        TextView labelAdFirebase = (TextView) view.findViewById(R.id.text_label_ad);
+        ImageView channelImageView = (ImageView) view.findViewById(R.id.channel_image_view);
+        if (channelNameTextview!=null && channelDescriptionTextView!=null && channelImageView!=null && labelAdFirebase!=null){
+
+            channelNameTextview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    i.setAction(MainActivity.ACTION_VIEW_CHANNEL);
+                    i.putExtra(ChannelBrowserFragment.CHANNEL_ID, FirebaseHelper.ID_CHANNEL);
+                    startActivity(i);
+                }
+            });
+
+            channelDescriptionTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    i.setAction(MainActivity.ACTION_VIEW_CHANNEL);
+                    i.putExtra(ChannelBrowserFragment.CHANNEL_ID, FirebaseHelper.ID_CHANNEL);
+                    startActivity(i);
+                }
+            });
+
+            channelImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    i.setAction(MainActivity.ACTION_VIEW_CHANNEL);
+                    i.putExtra(ChannelBrowserFragment.CHANNEL_ID, FirebaseHelper.ID_CHANNEL);
+                    startActivity(i);
+                }
+            });
+
+            labelAdFirebase.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    i.setAction(MainActivity.ACTION_VIEW_CHANNEL);
+                    i.putExtra(ChannelBrowserFragment.CHANNEL_ID, FirebaseHelper.ID_CHANNEL);
+                    startActivity(i);
+                }
+            });
+
+            channelNameTextview.setText(FirebaseHelper.NAME_CHANNEL);
+            channelDescriptionTextView.setText(FirebaseHelper.DESCRIPTION);
+            Glide.with(getActivity())
+                    .load(FirebaseHelper.BANNER)
+                    .centerCrop()
+                    .placeholder(R.drawable.thumbnail_default)
+                    .into(channelImageView);
+        }
 
 		// set up the loading progress bar
 		progressBar = view.findViewById(R.id.loading_progress_bar);
