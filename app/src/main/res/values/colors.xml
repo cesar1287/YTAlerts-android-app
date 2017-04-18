@@ -40,6 +40,9 @@
 
 	<color name="video_desc_like_bar">@color/skytube_theme_colour</color>
 
+	<!-- Description -->
+	<color name="description_background">#99000000</color>
+
 	<!-- Comments -->
 	<color name="comment_background">@color/video_player_hud</color>
 	<color name="comment_text">#FFF</color>
