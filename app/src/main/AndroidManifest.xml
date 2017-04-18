@@ -16,11 +16,6 @@
         <activity
             android:name=".gui.activities.MainActivity"
             android:theme="@style/NoActionBarActivityTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".gui.activities.YouTubePlayerActivity"
@@ -41,9 +36,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".gui.activities.PreferencesActivity" />
-        <activity android:name=".gui.activities.SplashScreenActivity" />
+        <activity android:name=".gui.activities.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".gui.activities.DoubtsActivity" />
-        <activity android:name=".gui.activities.AboutActivity"></activity>
+        <activity android:name=".gui.activities.AboutActivity"/>
     </application>
 
 </manifest>
