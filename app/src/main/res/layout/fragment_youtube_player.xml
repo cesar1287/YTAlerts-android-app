@@ -61,27 +61,8 @@
 			android:orientation="vertical"
 			android:padding="16dp"
 			android:gravity="left"
-            android:background="@color/comment_background"
 			layout="@layout/video_description" />
 	</hollowsoft.slidingdrawer.SlidingDrawer>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/bookmark_heart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_heart_white"
-            android:layout_alignParentBottom="true"
-            android:scaleX="0.45"
-            android:scaleY="0.42"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="60dp"
-            android:layout_marginEnd="60dp"/>
-    </RelativeLayout>
 
 	<!--
 		COMMENTS
@@ -141,5 +122,22 @@
 				style="@style/LoadingProgressBar"/>
 		</RelativeLayout>
 	</hollowsoft.slidingdrawer.SlidingDrawer>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+		<ImageView
+			android:id="@+id/bookmark_heart"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/ic_heart_white"
+			android:layout_alignParentBottom="true"
+			android:scaleX="0.45"
+			android:scaleY="0.42"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentEnd="true"
+			android:layout_marginRight="60dp"
+			android:layout_marginEnd="60dp"/>
+	</RelativeLayout>
 
 </FrameLayout>
