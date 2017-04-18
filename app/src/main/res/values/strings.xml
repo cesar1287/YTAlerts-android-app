@@ -17,4 +17,12 @@
     <string name="about">Sobre</string>
     <string name="loading_doubts_pls_wait">Carregando dúvidas, por favor aguarde…</string>
     <string name="error_loading_doubts">Erro ao carregar as dúvidas</string>
+    <string name="about_text_initial">YT-Alerts - Notificações para YouTube.\nAgradecemos por utilizar o YT-Alerts!\n\nO YT-Alerts é uma alternativa ao app
+        do YouTube onde vários usuários possuem problemas com as notificações de novos vídeos de seus youtubers favoritos, vídeos que não carregam,
+        carregam e travam e outros problemas reportados por diversos usuários. O YT-Alerts veio para solucionar esses problemas :)\n\n\nÍcone do app desenvolvido
+        por Andre Rezende.</string>
+    <string name="about_text_final">Problemas, dúvidas ou sugestões?</string>
+    <string name="email_label">E-mail:</string>
+    <string name="error_loading_emails_about">Erro ao carregar os emails da tela \"Sobre\"</string>
+    <string name="loading_about_pls_wait">Carregando a tela \"Sobre\", por favor aguarde…</string>
 </resources>
