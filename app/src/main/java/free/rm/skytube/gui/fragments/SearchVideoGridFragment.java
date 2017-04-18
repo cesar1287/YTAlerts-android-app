@@ -59,7 +59,7 @@ public class SearchVideoGridFragment extends BaseVideosGridFragment {
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-		this.gridView = (RecyclerView) view.findViewById(R.id.grid_view);
+		this.gridView = (RecyclerView) view.findViewById(R.id.grid_view1);
 
 		// set up the loading progress bar
 		LoadingProgressBar.get().setProgressBar(view.findViewById(R.id.loading_progress_bar));
