@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     tools:context="free.rm.skytube.gui.activities.AboutActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/about_text_initial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:text="@string/about_text_initial"/>
+
+    <TextView
+        android:id="@+id/label_email_icon"
+        android:text="@string/email_label"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_text_initial"/>
+
+    <TextView
+        android:id="@+id/email_developer_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="andrerezende4@gmail.com"
+        android:textColor="#000"
+        android:autoLink="email"
+        android:layout_alignBaseline="@+id/label_email_icon"
+        android:layout_alignBottom="@+id/label_email_icon"
+        android:layout_toRightOf="@+id/label_email_icon"
+        android:layout_toEndOf="@+id/label_email_icon" />
+
+    <TextView
+        android:id="@+id/about_text_final"
+        android:layout_marginTop="10dp"
+        android:text="@string/about_text_final"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_developer_icon"/>
+
+    <TextView
+        android:id="@+id/label_email_ytalerts"
+        android:text="@string/email_label"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_text_final"/>
+
+    <TextView
+        android:id="@+id/email_proper_ytalerts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="iagomcs95@gmail.com"
+        android:textColor="#000"
+        android:autoLink="email"
+        android:layout_alignBaseline="@+id/label_email_ytalerts"
+        android:layout_alignBottom="@+id/label_email_ytalerts"
+        android:layout_toRightOf="@+id/label_email_ytalerts"
+        android:layout_toEndOf="@+id/label_email_ytalerts" />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:textColor="#000"
+        android:text="Versão 1.0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_email_ytalerts"/>
+
+</RelativeLayout>
