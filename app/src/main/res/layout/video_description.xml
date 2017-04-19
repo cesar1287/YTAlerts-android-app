@@ -58,7 +58,7 @@
 						android:text="Channel Name"/>
 
 					<!-- SUB BUTTON -->
-					<free.rm.skytube.gui.businessobjects.SubscribeButton
+					<free.ytalerts.app.gui.businessobjects.SubscribeButton
 						android:id="@+id/video_desc_subscribe_button"
 						style="@style/SubscribeButton"
 						android:layout_below="@id/video_desc_channel"/>

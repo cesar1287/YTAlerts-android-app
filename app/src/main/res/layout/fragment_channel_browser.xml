@@ -74,7 +74,7 @@
 							style="@style/ChannelDetailsTextView"/>
 					</LinearLayout>
 
-					<free.rm.skytube.gui.businessobjects.SubscribeButton
+					<free.ytalerts.app.gui.businessobjects.SubscribeButton
 						android:id="@+id/channel_subscribe_button"
 						style="@style/SubscribeButton"
 						android:layout_margin="16dp"

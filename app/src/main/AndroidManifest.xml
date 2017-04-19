@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="free.rm.skytube">
+    package="free.ytalerts.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".gui.app.SkyTubeApp"
+        android:name="free.ytalerts.app.gui.app.SkyTubeApp"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".gui.activities.MainActivity"
+            android:name="free.ytalerts.app.gui.activities.MainActivity"
             android:theme="@style/NoActionBarActivityTheme">
         </activity>
         <activity
-            android:name=".gui.activities.YouTubePlayerActivity"
+            android:name="free.ytalerts.app.gui.activities.YouTubePlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/VideoPlayerActivityTheme">
             <intent-filter>
@@ -35,16 +35,16 @@
                 <data android:host="youtu.be" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.activities.PreferencesActivity" />
-        <activity android:name=".gui.activities.SplashScreenActivity">
+        <activity android:name="free.ytalerts.app.gui.activities.PreferencesActivity" />
+        <activity android:name="free.ytalerts.app.gui.activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.activities.DoubtsActivity" />
-        <activity android:name=".gui.activities.AboutActivity"/>
+        <activity android:name="free.ytalerts.app.gui.activities.DoubtsActivity" />
+        <activity android:name="free.ytalerts.app.gui.activities.AboutActivity"/>
     </application>
 
 </manifest>

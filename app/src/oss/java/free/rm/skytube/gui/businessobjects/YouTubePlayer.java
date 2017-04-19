@@ -15,14 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package free.rm.skytube.gui.businessobjects;
+package free.ytalerts.app.gui.businessobjects;
 
 import android.content.Context;
 import android.content.Intent;
 
-import free.rm.skytube.businessobjects.YouTubeVideo;
-import free.rm.skytube.gui.activities.YouTubePlayerActivity;
-import free.rm.skytube.gui.fragments.YouTubePlayerFragment;
+import free.ytalerts.app.businessobjects.YouTubeVideo;
+import free.ytalerts.app.gui.activities.YouTubePlayerActivity;
+import free.ytalerts.app.gui.fragments.YouTubePlayerFragment;
 
 /**
  * Launches YouTube player.

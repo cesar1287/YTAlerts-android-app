@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:642515298695:android:6486840d00ce7853",
+        "mobilesdk_app_id": "1:642515298695:android:6e18441a2bee2d8e",
         "android_client_info": {
-          "package_name": "free.rm.skytube"
+          "package_name": "free.ytalerts.app"
         }
       },
       "oauth_client": [

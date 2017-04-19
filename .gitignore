@@ -41,3 +41,4 @@ proguard/
 .DS_Store
 /captures
 .idea
+!/app/src/main/java/free/rm/skytube/

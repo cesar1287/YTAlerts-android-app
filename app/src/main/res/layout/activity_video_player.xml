@@ -8,7 +8,7 @@
 
 	<fragment
 		android:id="@+id/b_fragment"
-		android:name="free.rm.skytube.gui.fragments.YouTubePlayerFragment"
+		android:name="free.ytalerts.app.gui.fragments.YouTubePlayerFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
 

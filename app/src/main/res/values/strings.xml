@@ -10,8 +10,8 @@
     <string name="featured">Início</string>
     <string name="most_popular">Em alta</string>
 
-    <string name="banner_ad_unit_id">ca-app-pub-5876317032514043/1119629810</string>
-    <string name="interstitial_full_screen">ca-app-pub-5876317032514043/3514693016</string>
+    <string name="banner_ad_unit_id">ca-app-pub-5876317032514043/5177739419</string>
+    <string name="interstitial_full_screen">ca-app-pub-5876317032514043/6654472617</string>
     <string name="error_loading_ad">Erro ao carregar o anúncio</string>
     <string name="doubts">Dúvidas</string>
     <string name="about">Sobre</string>
@@ -25,4 +25,5 @@
     <string name="email_label">E-mail:</string>
     <string name="error_loading_emails_about">Erro ao carregar os emails da tela \"Sobre\"</string>
     <string name="loading_about_pls_wait">Carregando a tela \"Sobre\", por favor aguarde…</string>
+    <string name="number_exec_app">numero_execucoes_app</string>
 </resources>
