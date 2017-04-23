@@ -1,4 +1,4 @@
-package free.ytalerts.app.gui.businessobjects;
+package free.ytalerts.app.gui.businessobjects.firebase;
 
 public class FirebaseHelper {
 
@@ -15,6 +15,8 @@ public class FirebaseHelper {
     public static final String FIREBASE_DATABASE_ANSWER = "resposta";
     public static final String FIREBASE_DATABASE_EMAIL_ICON = "icone";
     public static final String FIREBASE_DATABASE_EMAIL_YTALERTS = "ytalerts";
+
+    public static final String FIREBASE_NOTIFICATION_LINK = "link";
 
     public static String NAME_CHANNEL = "nome";
     public static String BANNER = "banner";

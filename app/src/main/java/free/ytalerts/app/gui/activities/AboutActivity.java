@@ -15,7 +15,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import free.ytalerts.app.R;
-import free.ytalerts.app.gui.businessobjects.FirebaseHelper;
+import free.ytalerts.app.gui.businessobjects.firebase.FirebaseHelper;
 
 public class AboutActivity extends AppCompatActivity {
 

@@ -20,7 +20,7 @@ import java.util.List;
 
 import free.ytalerts.app.R;
 import free.ytalerts.app.gui.businessobjects.ExpandableListAdapter;
-import free.ytalerts.app.gui.businessobjects.FirebaseHelper;
+import free.ytalerts.app.gui.businessobjects.firebase.FirebaseHelper;
 import free.ytalerts.app.gui.businessobjects.domain.DoubtFirebase;
 
 public class DoubtsActivity extends AppCompatActivity {

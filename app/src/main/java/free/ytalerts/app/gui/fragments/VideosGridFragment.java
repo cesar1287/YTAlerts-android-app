@@ -35,7 +35,7 @@ import free.ytalerts.app.R;
 import free.ytalerts.app.businessobjects.MainActivityListener;
 import free.ytalerts.app.businessobjects.VideoCategory;
 import free.ytalerts.app.gui.activities.MainActivity;
-import free.ytalerts.app.gui.businessobjects.FirebaseHelper;
+import free.ytalerts.app.gui.businessobjects.firebase.FirebaseHelper;
 import free.ytalerts.app.gui.businessobjects.VideoGridAdapter;
 
 /**
