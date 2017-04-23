@@ -26,4 +26,6 @@
     <string name="error_loading_emails_about">Erro ao carregar os emails da tela \"Sobre\"</string>
     <string name="loading_about_pls_wait">Carregando a tela \"Sobre\", por favor aguarde…</string>
     <string name="number_exec_app">numero_execucoes_app</string>
+    <string name="text_no_internet_connection">Sem conexão com a internet. Verifique e tente novamente.</string>
+    <string name="button_try_again">Tentar novamente</string>
 </resources>
