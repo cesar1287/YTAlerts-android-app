@@ -20,6 +20,8 @@ package free.ytalerts.app.businessobjects.db;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import free.ytalerts.app.R;
 import free.ytalerts.app.businessobjects.YouTubeChannel;
 import free.ytalerts.app.gui.app.SkyTubeApp;
@@ -77,6 +79,8 @@ public class SubscribeToChannelTask extends AsyncTask<Void, Void, Boolean> {
 				// append the channel to the SubsAdapter (i.e. the channels subscriptions list/drawer)
 				adapter.appendChannel(channel);
 
+				FirebaseMessaging.getInstance().subscribeToTopic(channel.getId());
+
 				Toast.makeText(subscribeButton.getContext(), R.string.subscribed, Toast.LENGTH_LONG).show();
 			} else {
 				// change the state of the button
@@ -86,6 +90,8 @@ public class SubscribeToChannelTask extends AsyncTask<Void, Void, Boolean> {
 				
 				// remove the channel from the SubsAdapter (i.e. the channels subscriptions list/drawer)
 				adapter.removeChannel(channel);
+
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(channel.getId());
 
 				Toast.makeText(subscribeButton.getContext(), R.string.unsubscribed, Toast.LENGTH_LONG).show();
 			}
