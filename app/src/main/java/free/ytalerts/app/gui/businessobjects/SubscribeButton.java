@@ -28,7 +28,7 @@ import free.ytalerts.app.R;
  * The (channel) subscribe button.
  */
 @RemoteViews.RemoteView
-public class SubscribeButton extends Button {
+public class SubscribeButton extends android.support.v7.widget.AppCompatButton {
 
 	/** Is user subscribed to a channel? */
 	private boolean isUserSubscribed = false;
