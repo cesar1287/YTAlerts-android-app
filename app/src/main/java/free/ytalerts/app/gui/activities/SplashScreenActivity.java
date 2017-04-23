@@ -1,8 +1,16 @@
 package free.ytalerts.app.gui.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import free.ytalerts.app.R;
-import free.ytalerts.app.gui.businessobjects.FirebaseHelper;
+import free.ytalerts.app.gui.businessobjects.firebase.FirebaseHelper;
 import free.ytalerts.app.gui.businessobjects.domain.AdFirebase;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -27,15 +35,70 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     ArrayList<AdFirebase> ads;
 
+    Intent intent;
+
+    String value;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        setupFirebaseAd();
-
-        if(getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
+        }
+
+        final ImageView imageView = (ImageView) findViewById(R.id.image_splash_screen);
+        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.no_connection_container);
+        Button btNoConnection = (Button) findViewById(R.id.btn_try_again);
+        btNoConnection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isConnected()) {
+
+                    imageView.setVisibility(View.VISIBLE);
+                    relativeLayout.setVisibility(View.GONE);
+
+                    intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+
+                    if (getIntent().getExtras() != null) {
+                        for (String key : getIntent().getExtras().keySet()) {
+
+                            if (key.equals(FirebaseHelper.FIREBASE_NOTIFICATION_LINK)) {
+                                value = getIntent().getExtras().getString(key);
+                            }
+                        }
+                    }
+
+                    setupFirebaseAd();
+                }
+            }
+        });
+
+        if(isConnected()) {
+
+            imageView.setVisibility(View.VISIBLE);
+            relativeLayout.setVisibility(View.GONE);
+
+            intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+
+            if (getIntent().getExtras() != null) {
+                for (String key : getIntent().getExtras().keySet()) {
+
+                    if (key.equals(FirebaseHelper.FIREBASE_NOTIFICATION_LINK)) {
+                        value = getIntent().getExtras().getString(key);
+                    }
+                }
+            }
+
+            setupFirebaseAd();
+
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().hide();
+            }
+        }else{
+            imageView.setVisibility(View.GONE);
+            relativeLayout.setVisibility(View.VISIBLE);
         }
     }
 
@@ -45,6 +108,16 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         mAd.removeEventListener(valueEventListener);
         mAd.removeEventListener(singleValueEventListener);
+    }
+
+    public boolean isConnected(){
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
     }
 
     public void setupFirebaseAd(){
@@ -91,7 +164,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                 FirebaseHelper.CLICKS = ads.get(0).getClicks();
                 FirebaseHelper.ID_CHANNEL= ads.get(0).getId_channel();
                 FirebaseHelper.IMPRESSIONS = ads.get(0).getImpressions();
-                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                startActivity(intent);
+
+                if(value!=null) {
+                    Intent i = new Intent(SplashScreenActivity.this, YouTubePlayerActivity.class);
+                    i.setAction(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse("https://www.youtube.com/watch?v="+value));
+                    startActivity(i);
+                }
                 finish();
             }
 
