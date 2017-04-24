@@ -15,6 +15,7 @@ public class FirebaseHelper {
     public static final String FIREBASE_DATABASE_ANSWER = "resposta";
     public static final String FIREBASE_DATABASE_EMAIL_ICON = "icone";
     public static final String FIREBASE_DATABASE_EMAIL_YTALERTS = "ytalerts";
+    public static final String FIREBASE_DATABASE_CHANNELS = "canais";
 
     public static final String FIREBASE_NOTIFICATION_LINK = "link";
 

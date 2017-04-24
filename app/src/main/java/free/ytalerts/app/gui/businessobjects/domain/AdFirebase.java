@@ -2,12 +2,21 @@ package free.ytalerts.app.gui.businessobjects.domain;
 
 public class AdFirebase {
 
+    private String child;
     private String banner;
     private String channel;
     private long clicks;
     private String id_channel;
     private long impressions;
     private String description;
+
+    public String getChild() {
+        return child;
+    }
+
+    public void setChild(String child) {
+        this.child = child;
+    }
 
     public String getDescription() {
         return description;

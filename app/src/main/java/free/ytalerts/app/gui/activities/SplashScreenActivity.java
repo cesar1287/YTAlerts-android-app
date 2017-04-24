@@ -122,7 +122,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     public void setupFirebaseAd(){
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mAd = mDatabase.child(FirebaseHelper.FIREBASE_DATABASE_AD);
 
@@ -136,6 +136,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ad = new AdFirebase();
 
+                    ad.setChild(postSnapshot.getKey());
                     ad.setChannel((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_CHANNEL).getValue());
                     ad.setDescription((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_DESCRIPTION).getValue());
                     ad.setBanner((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_BANNER).getValue());
@@ -157,6 +158,11 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Collections.shuffle(ads);
+
+                mDatabase.child(FirebaseHelper.FIREBASE_DATABASE_AD)
+                        .child(ads.get(0).getChild())
+                        .child(FirebaseHelper.FIREBASE_DATABASE_IMPRESSIONS)
+                        .setValue(ads.get(0).getImpressions()+1);
 
                 FirebaseHelper.NAME_CHANNEL = ads.get(0).getChannel();
                 FirebaseHelper.DESCRIPTION = ads.get(0).getDescription();
