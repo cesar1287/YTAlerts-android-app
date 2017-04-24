@@ -8,7 +8,15 @@ public class AdFirebase {
     private long clicks;
     private String id_channel;
     private long impressions;
-    private String description;
+    private String description, link;
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getChild() {
         return child;
