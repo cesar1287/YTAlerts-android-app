@@ -143,6 +143,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     ad.setClicks((Long) postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_CLICKS).getValue());
                     ad.setId_channel((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_ID_CHANNEL).getValue());
                     ad.setImpressions((Long) postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_IMPRESSIONS).getValue());
+                    ad.setLink((String)postSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_LINK).getValue());
 
                     ads.add(ad);
                 }
@@ -164,12 +165,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                         .child(FirebaseHelper.FIREBASE_DATABASE_IMPRESSIONS)
                         .setValue(ads.get(0).getImpressions()+1);
 
+                FirebaseHelper.CHILD = ads.get(0).getChild();
                 FirebaseHelper.NAME_CHANNEL = ads.get(0).getChannel();
                 FirebaseHelper.DESCRIPTION = ads.get(0).getDescription();
                 FirebaseHelper.BANNER = ads.get(0).getBanner();
                 FirebaseHelper.CLICKS = ads.get(0).getClicks();
                 FirebaseHelper.ID_CHANNEL= ads.get(0).getId_channel();
                 FirebaseHelper.IMPRESSIONS = ads.get(0).getImpressions();
+                FirebaseHelper.LINK = ads.get(0).getLink();
                 startActivity(intent);
 
                 if(value!=null) {
