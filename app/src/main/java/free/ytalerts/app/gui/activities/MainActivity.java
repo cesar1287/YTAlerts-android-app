@@ -23,11 +23,20 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import free.ytalerts.app.R;
 import free.ytalerts.app.businessobjects.MainActivityListener;
 import free.ytalerts.app.businessobjects.YouTubeChannel;
+import free.ytalerts.app.gui.businessobjects.firebase.FirebaseHelper;
 import free.ytalerts.app.gui.fragments.ChannelBrowserFragment;
 import free.ytalerts.app.gui.fragments.MainFragment;
 import free.ytalerts.app.gui.fragments.SearchVideoGridFragment;
@@ -51,11 +60,20 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 	SharedPreferences sharedPref;
 	SharedPreferences.Editor editor;
 
+	Query mAd;
+	ValueEventListener valueEventListener;
+	ValueEventListener singleValueEventListener;
+	DatabaseReference mDatabase;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
+
+		mDatabase = FirebaseDatabase.getInstance().getReference();
+
+		setupSyncAdClicks();
 
 		String action = getIntent().getAction();
 
@@ -93,6 +111,28 @@ public class MainActivity extends AppCompatActivity implements MainActivityListe
 				}
 			}
 		}
+	}
+
+	private void setupSyncAdClicks() {
+
+		mAd = mDatabase
+				.child(FirebaseHelper.FIREBASE_DATABASE_AD)
+				.child(FirebaseHelper.CHILD);
+
+		valueEventListener = new ValueEventListener() {
+			@Override
+			public void onDataChange(DataSnapshot dataSnapshot) {
+
+				FirebaseHelper.CLICKS = (Long) dataSnapshot.child(FirebaseHelper.FIREBASE_DATABASE_CLICKS).getValue();
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				Toast.makeText(MainActivity.this, R.string.error_loading_ad, Toast.LENGTH_LONG).show();
+			}
+		};
+
+		mAd.addValueEventListener(valueEventListener);
 	}
 
 	private void launchMarket() {
