@@ -20,6 +20,7 @@ package free.ytalerts.app.businessobjects.db;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import free.ytalerts.app.R;
@@ -27,6 +28,7 @@ import free.ytalerts.app.businessobjects.YouTubeChannel;
 import free.ytalerts.app.gui.app.SkyTubeApp;
 import free.ytalerts.app.gui.businessobjects.SubsAdapter;
 import free.ytalerts.app.gui.businessobjects.SubscribeButton;
+import free.ytalerts.app.gui.businessobjects.firebase.FirebaseHelper;
 
 /**
  * A task that subscribes / unsubscribes to a YouTube channel.
@@ -80,6 +82,10 @@ public class SubscribeToChannelTask extends AsyncTask<Void, Void, Boolean> {
 				adapter.appendChannel(channel);
 
 				FirebaseMessaging.getInstance().subscribeToTopic(channel.getId());
+				FirebaseDatabase.getInstance().getReference()
+						.child(FirebaseHelper.FIREBASE_DATABASE_CHANNELS)
+						.child(channel.getId())
+						.setValue(channel.getId());
 
 				Toast.makeText(subscribeButton.getContext(), R.string.subscribed, Toast.LENGTH_LONG).show();
 			} else {
